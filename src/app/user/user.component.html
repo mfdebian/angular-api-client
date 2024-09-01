@@ -6,6 +6,8 @@
     <p><strong>Phone: </strong>{{ user.phone }}</p>
     <p><strong>Website: </strong>{{ user.website }}</p>
     <button (click)="toggleEditUser()">Edit</button>
+    |
+    <button (click)="handleDelete(user.id)">Delete</button>
   }
   @if (showEditUser) {
     <app-edit-user [user]="user" (toggleEditUser)="toggleEditUser()"></app-edit-user>

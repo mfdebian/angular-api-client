@@ -49,4 +49,19 @@ export class UsersService {
       })
     );
   }
+
+  deleteUser(id: number): Observable<string> {
+    return this.http.delete<string>(`${this.url}${id}`, {
+      headers: { Accept: 'application/json' }
+    }).pipe(
+      tap(response => {
+        if (response === 'OK') {
+          const updatedUsers = this.usersSubject.getValue().filter(user => user.id !== id);
+          this.usersSubject.next(updatedUsers);
+        } else {
+          console.error(`Failed to delete user with ID ${id}. Status: ${response}`);
+        }
+      })
+    );
+  }
 }
