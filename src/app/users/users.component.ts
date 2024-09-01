@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserComponent } from '../user/user.component';
 import { UsersService } from '../users.service';
 import { User } from '../../../definitions';
@@ -11,22 +11,22 @@ import { AddUserComponent } from "../add-user/add-user.component";
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   users: User[] = [];
   showAddUser = false;
 
-  constructor(private usersService: UsersService) {
-    this.usersService.getUsers().subscribe((users: User[]) => {
+  constructor(private usersService: UsersService) {}
+
+  ngOnInit() {
+    this.usersService.getUsers();
+
+    this.usersService.users$.subscribe(users => {
       this.users = users;
     });
   }
 
   addUser(userToSave: User) {
-    this.usersService.postUser(userToSave).subscribe((savedUser: User) => {
-      savedUser.id = Math.floor(Math.random() * (10000 - 11) + 11);
-      this.users.unshift(savedUser);
-    })
-
+    this.usersService.postUser(userToSave).subscribe();
     this.showAddUser = false;
   }
 }

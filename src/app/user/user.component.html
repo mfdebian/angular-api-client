@@ -1,9 +1,13 @@
 <section>
-  @if (user) {
+  @if (user && !showEditUser) {
     <h3>{{ user.name }}</h3>
     <p><strong>Username: </strong>{{ user.username }}</p>
     <p><strong>Email: </strong>{{ user.email }}</p>
     <p><strong>Phone: </strong>{{ user.phone }}</p>
     <p><strong>Website: </strong>{{ user.website }}</p>
+    <button (click)="toggleEditUser()">Edit</button>
+  }
+  @if (showEditUser) {
+    <app-edit-user [user]="user" (toggleEditUser)="toggleEditUser()"></app-edit-user>
   }
 </section>

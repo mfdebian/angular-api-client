@@ -23,7 +23,7 @@ export class AddUserComponent {
 
   handleSubmit() {
     this.newUser = {
-      id: 11,
+      id: Math.floor(Math.random() * (10000 - 11) + 11),
       name: this.userForm.value.name || '',
       email: this.userForm.value.email || '',
       phone: this.userForm.value.phone || '',

@@ -1,0 +1,13 @@
+@if (user) {
+  <form [formGroup]="editUserForm" (ngSubmit)="handleSubmit()">
+    <p><strong>Name: </strong><input type="text" formControlName="name" /></p>
+    <p><strong>Username: </strong><input type="text" formControlName="username" /></p>
+    <p><strong>Email: </strong><input type="email" formControlName="email" /></p>
+    <p><strong>Phone: </strong><input type="phone" formControlName="phone" /></p>
+    <p><strong>Website: </strong><input type="website" formControlName="website" /></p>
+    <button type="submit">Confirm edit</button>
+    |
+    <button type="button" (click)="handleCancel()">Cancel</button>
+    <br />
+  </form>
+}
