@@ -1,0 +1,11 @@
+<div>
+  <form [formGroup]="userForm" (ngSubmit)="handleSubmit()">
+    <p><input type="text" placeholder="Name" formControlName="name" /></p>
+    <p><input type="text" placeholder="Username" formControlName="username" /></p>
+    <p><input type="email" placeholder="Email" formControlName="email" /></p>
+    <p><input type="phone" placeholder="Phone" formControlName="phone" /></p>
+    <p><input type="website" placeholder="Website" formControlName="website" /></p>
+    <button type="submit">Submit</button>
+  </form>
+  <hr>
+</div>
