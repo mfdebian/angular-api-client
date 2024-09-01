@@ -1,12 +1,23 @@
 @defer {
+  <br >
+  <button (click)="showAddUser = !showAddUser">Add User</button>
+  @if (showAddUser) {
+    <div>
+      <form [formGroup]="userForm" (ngSubmit)="handleSubmit()">
+        <p><input type="text" placeholder="Name" formControlName="name" /></p>
+        <p><input type="text" placeholder="Username" formControlName="username" /></p>
+        <p><input type="email" placeholder="Email" formControlName="email" /></p>
+        <p><input type="phone" placeholder="Phone" formControlName="phone" /></p>
+        <p><input type="website" placeholder="Website" formControlName="website" /></p>
+        <button type="submit">Submit</button>
+      </form>
+      <hr>
+    </div>
+  }
   @for (user of users; track user.id) {
     <div>
-      <h3>{{ user.name }}</h3>
-      <p><strong>Username: </strong>{{ user.username }}</p>
-      <p><strong>Email: </strong>{{ user.email }}</p>
-      <p><strong>Phone: </strong>{{ user.phone }}</p>
-      <p><strong>Website: </strong>{{ user.website }}</p>
-      <br />
+      <app-user [user]="user"></app-user>
+      <hr>
     </div>
   } 
 } @loading (minimum 1s) {
